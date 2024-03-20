@@ -17,6 +17,10 @@ body {
     margin: 50px auto;
 }
 
+header {
+    position: relative;
+}
+
 header .logo {
     font-weight: 700;
     font-size: 24px;
@@ -38,6 +42,73 @@ header ul.nav li {
 header ul.nav li:hover {
     opacity: 0.5;
     color: rgb(255, 136, 0);
+}
+
+header .shop-cart-button {
+    float: right;
+    cursor: pointer;
+    transition: color, transform 500ms ease;
+}
+
+header .shop-cart-button:hover,
+header .shop-cart-button.active {
+    color: rgb(216, 116, 2);
+    transform: scale(1.5);
+}
+
+header .shop-cart {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    width: 450px;
+    background: #f7f6f6;
+    -webkit-box-shadow: 4px 5px 15px -7px #606060;
+    box-shadow: 4px 5px 15px -7px #606060;
+    z-index: 1000;
+
+    padding: 20px;
+    padding-bottom: 0;
+}
+
+header .shop-cart .empty h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+header .shop-cart .item {
+    width: 100%;
+    float: left;
+    margin-bottom: 20px;
+}
+
+header .shop-cart .item img {
+    width: 70px;
+    float: left;
+    margin-right: 20px;
+}
+
+header .shop-cart .item h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+header .shop-cart .item b {
+    color: #12d252;
+    font-weight: 600;
+}
+
+header .shop-cart .item .delete-item {
+    color: orangered;
+    float: right;
+    position: relative;
+    top: -10px;
+    cursor: pointer;
+    transition: color, transform 500ms ease;
+}
+
+header .shop-cart .item .delete-item:hover {
+    color: red;
+    transform: scale(1.5);
 }
 
 header .banner {
@@ -110,24 +181,28 @@ main b {
     font-size: 20px;
 }
 
+main .item-use {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
 main .add-to-cart {
-    position: absolute;
     right: 30px;
     bottom: 10px;
-    background: #ca5252;
-    width: 25px;
+    width: 50px;
     height: 25px;
+    scale: 1.3;
     text-align: center;
     line-height: 25px;
-    color: #fff;
-    border-radius: 50%;
     cursor: pointer;
     font-weight: 600;
     transition: transform 500ms ease;
 }
 
 main .add-to-cart:hover {
-    transform: scale(1.05) translateY(-5px);
+    transform: scale(1.5) ;
 }
 
 footer {
