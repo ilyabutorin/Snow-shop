@@ -111,6 +111,14 @@ header .shop-cart .item .delete-item:hover {
     transform: scale(1.5);
 }
 
+header .shop-cart .sum {
+    float: left;
+    width: 100%;
+    font-weight: 700;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
 header .banner {
     margin: 50px 0;
     background:  url('./img/banner.jpeg') no-repeat;
@@ -145,6 +153,48 @@ header .banner::before {
     color: #fff;
 }
 
+.categories {
+    display: flex;
+    justify-content: center;
+}
+
+.categories div {
+    display: inline-block;
+    background: #f4f2f2;
+    border-radius: 50px;
+    padding: 10px 20px;
+    margin-bottom: 25px;
+    margin-right: 15px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 500ms ease;
+}
+
+.categories div:hover {
+    border-color: silver;
+    transform: scale(1.1);
+}
+
+.full-item {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #60606095;
+    z-index: 9999;
+    overflow: auto;
+}
+
+.full-item > div {
+    width: 500px;
+    position: relative;
+    margin: 10% auto;
+    padding: 40px 30px;
+    background: #fff;
+    border-radius: 10px;
+}
+
 main {
     display: flex;
     width: 100%;
@@ -160,35 +210,38 @@ main .item {
     padding-bottom: 15px;
 }
 
-main .item img {
+main .item img, .full-item img {
     width: 100%;
     transition: transform 500ms ease;
+    cursor: pointer;
 }
 
-main .item img:hover {
+main .item img:hover, .full-item img:hover {
     transform: scale(1.05);
 }
 
-main h2, 
-main p, 
-main b {
+main h2, .full-item h2,
+main p, .full-item p,
+main b, .full-item b {
     margin: 10px 20px;
     color: #333;
 }
 
-main b {
+main b, .full-item b {
     color: #5fa36a;
     font-size: 20px;
 }
 
-main .item-use {
+main .item-use,
+.full-item .item-use {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
 }
 
-main .add-to-cart {
+main .add-to-cart,
+.full-item .add-to-cart {
     right: 30px;
     bottom: 10px;
     width: 50px;
@@ -201,9 +254,12 @@ main .add-to-cart {
     transition: transform 500ms ease;
 }
 
-main .add-to-cart:hover {
+main .add-to-cart:hover,
+.full-item .add-to-cart:hover {
     transform: scale(1.5) ;
 }
+
+
 
 footer {
     text-align: center;

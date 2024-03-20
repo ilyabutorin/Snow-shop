@@ -2,6 +2,8 @@ import React from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Items from "./components/Items";
+import Categories from "./components/Categories";
+import ModalItem from "./components/ModalItem";
 
 class App extends React.Component {
 
@@ -9,6 +11,7 @@ class App extends React.Component {
     super(props)
     this.state = {
       orders: [],
+      currentItems: [],
       items: [
         {
           id: 1,
@@ -130,19 +133,49 @@ class App extends React.Component {
           category: 'equipment',
           price: '49.95'
         },
-      ]
+      ],
+      modalItem: false,
+      fullItem: {}
     }
+
+    this.state.currentItems = this.state.items;
     this.addOrder = this.addOrder.bind(this);
+    this.deleteOrder = this.deleteOrder.bind(this);
+    this.chooseCategory = this.chooseCategory.bind(this);
+    this.showModalItem = this.showModalItem.bind(this);
   }
 
   render() {
     return (
       <div className="wrapper">
-        <Header orders={this.state.orders} />
-        <Items items={this.state.items} onAdd={this.addOrder} />
+        <Header orders={this.state.orders} onDelete={this.deleteOrder} />
+        <Categories chooseCategory={this.chooseCategory} />
+        <Items  showModalItem={this.showModalItem} items={this.state.currentItems} onAdd={this.addOrder} />
+
+        {this.state.modalItem && <ModalItem showModalItem={this.showModalItem} onAdd={this.addOrder} item={this.state.fullItem}/>}
+        
         <Footer />
       </div>
     );
+  }
+
+  showModalItem(item) {
+    this.setState({fullItem: item})
+    this.setState({modalItem: !this.state.modalItem})
+  }
+
+  chooseCategory(category) {
+    this.setState({
+      currentItems: this.state.items.filter(el => el.category === category)
+    });
+
+    if (category === 'all') {
+      this.setState({ currentItems: this.state.items })
+    };
+  }
+
+  deleteOrder(id) {
+    this.setState({ orders: this.state.orders.filter(el => el.id !== id) })
   }
 
   addOrder(item) {
